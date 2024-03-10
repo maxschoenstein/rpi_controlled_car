@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>RC Auto Steuerung</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+        const socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        function sendCommand(direction) {
+            socket.emit('control', direction);
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowUp') sendCommand('forward');
+            if (event.key === 'ArrowDown') sendCommand('backward');
+            if (event.key === 'ArrowLeft') sendCommand('left');
+            if (event.key === 'ArrowRight') sendCommand('right');
+            if (event.key === 'Escape') sendCommand('exit');
+        });
+    </script>
+</head>
+<body>
+    <h1>Verwende die Pfeiltasten, um das RC-Auto zu steuern</h1>
+</body>
+</html>
