@@ -4,6 +4,7 @@ import logging
 
 logging.basicConfig(level=logging.DEBUG)
 
+
 class PWMControl():
     def __init__(self, pin, frequency, max, min, neutral, step):
         self.pin = pin
@@ -22,24 +23,23 @@ class PWMControl():
         self.pwm.start(neutral)
         time.sleep(1.5)
         self.pwm.ChangeDutyCycle(0)
-        logging.info(f'{self.__class__.__name__} initalized\n \
+        logging.info(f'{self._class__.__name__} initalized\n \
         Pin: {self.pin}\n \
         PWM-Frequency: {self.frequency}\n\
         PWM-Max: {self.max}\n \
         PWM-Min: {self.min}\n \
         PWM-Neutral: {self.neutral}\n \
         PWM-Step: {self.step}\n'
-        )
-
+                     )
 
     def increase_duty_cycle(self):
         if self.duty_cycle >= self.max:
             pass
         else:
             self.duty_cycle += self.step
-            self.pwm.ChangeDutyCycle(self.duty_cycle) 
+            self.pwm.ChangeDutyCycle(self.duty_cycle)
             time.sleep(1.5)
-            self.pwm.ChangeDutyCycle(0) 
+            self.pwm.ChangeDutyCycle(0)
         logging.info('increase')
         logging.info(self.duty_cycle)
         return
@@ -49,9 +49,9 @@ class PWMControl():
             pass
         else:
             self.duty_cycle -= self.step
-            self.pwm.ChangeDutyCycle(self.duty_cycle) 
+            self.pwm.ChangeDutyCycle(self.duty_cycle)
             time.sleep(1.5)
-            self.pwm.ChangeDutyCycle(0) 
+            self.pwm.ChangeDutyCycle(0)
         logging.info('decrease')
         logging.info(self.duty_cycle)
 
@@ -60,13 +60,8 @@ class PWMControl():
     def exit(self):
         logging.info('exit')
 
-        self.pwm.ChangeDutyCycle(self.neutral) 
+        self.pwm.ChangeDutyCycle(self.neutral)
         time.sleep(1.5)
         self.pwm.stop()
         GPIO.cleanup()
         return
-
-    
-
-
-

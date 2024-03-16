@@ -1,11 +1,12 @@
-import RPi.GPIO as GPIO
 import time
 import logging
 
-logging.basicConfig(level=logging.DEBUG)
+import RPi.GPIO as GPIO
+
+from control_handler.pwm_output import PwmOutput
 
 
-class PWMControl():
+class PwmOutputAbsolute(PwmOutput):
     def __init__(self, pin, frequency, max, min, neutral):
         self.pin = pin
         self.frequency = frequency
@@ -23,7 +24,7 @@ class PWMControl():
         time.sleep(1.5)
         self.pwm.ChangeDutyCycle(0)
 
-        logging.info(f'{self.__class__.__name__} initalized\n \
+        logging.info(f'{self._class__.__name__} initalized\n \
         Pin: {self.pin}\n \
         PWM-Frequency: {self.frequency}\n\
         PWM-Max: {self.max}\n \
@@ -35,10 +36,10 @@ class PWMControl():
             scale = self.max
         elif percentage < 0:
             scale = self.min
-        scaledDutyCycle = self.__scaleDutyCycle(percentage, scale)
+        scaledDutyCycle = self._scaleDutyCycle(percentage, scale)
         self.pwm.ChangeDutyCycle(scaledDutyCycle)
 
-    def __scaleDutyCycle(self, percentage, scale):
+    def _scaleDutyCycle(self, percentage, scale):
         scaled = (scale-self.neutral) * abs(percentage)
         scaled_final = scaled + self.neutral
         return round(scaled_final, 1)

@@ -1,41 +1,32 @@
-import socketio
 
-from control_handler import ControlHandler
+import time
+import logging
+import os
+from dotenv import load_dotenv
 
-# Create a new Socket.IO client
-sio = socketio.Client()
+env_file_path = os.path.join(os.path.dirname(
+    os.path.dirname(__file__)), '.env.dev')
+load_dotenv(env_file_path)
 
+from control_handler.control_handler import ControlHandler  # noqa
+from input.factory.input_factory import InputFactory  # noqa
+from pwm_output.factory.pwm_output_factory import PwmOutputFactory  # noqa
 
-@sio.event
-def connect():
-    print('Connected to the server')
-
-
-@sio.on('drive')
-def drive(data):
-    control_handler.handle_drive(data)
-
-
-@sio.on('steer')
-def steer(data):
-    control_handler.handle_steer(data)
-
-
-@sio.event
-def disconnect():
-    print('Disconnected from the server')
-
+logging.basicConfig(level=logging.DEBUG)
 
 if __name__ == "__main__":
-    server_url = 'http://127.0.0.1:5001'
-    sio.connect(server_url)
+    controlHandler = ControlHandler()
+    pwmOutputs = PwmOutputFactory().createPwmOutout()
+    input = InputFactory().createInput(controlHandler, pwmOutputs)
 
-    control_handler = ControlHandler()
+    try:
+        input.connect()
+    except Exception as e:
+        raise Exception(f'{__file__}: {str(e)}')
+
     try:
         while True:
-            pass
+            time.sleep(1)
     except KeyboardInterrupt:
-        pass
-    finally:
-        # Disconnect from the server when done
-        sio.disconnect()
+        logging.info(f"KeyboardInterrupt: {__file__}")
+        input.disconnect()

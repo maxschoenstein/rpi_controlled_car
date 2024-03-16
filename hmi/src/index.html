@@ -444,7 +444,8 @@
         // const socket = io('http://' + IP + ':' + SOCKET_PORT);
 
         // Create MQTT client instance
-        client = new Paho.MQTT.Client('192.168.0.170', Number(9001), "clientId");
+        // client = new Paho.MQTT.Client('192.168.0.170', Number(9001), "clientId");
+        client = new Paho.MQTT.Client('192.168.0.138', Number(9001), "clientId");
 
         // set callback handlers
         client.onConnectionLost = onConnectionLost;
