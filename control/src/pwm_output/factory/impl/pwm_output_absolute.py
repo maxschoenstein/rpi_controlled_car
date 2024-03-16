@@ -38,6 +38,8 @@ class PwmOutputAbsolute(PwmOutput):
             scale = self.min
         scaledDutyCycle = self._scaleDutyCycle(percentage, scale)
         self.pwm.ChangeDutyCycle(scaledDutyCycle)
+        logging.info(
+            f'{__class__.__name__} - New DutyCycle: {scaledDutyCycle}')
 
     def _scaleDutyCycle(self, percentage, scale):
         scaled = (scale-self.neutral) * abs(percentage)
@@ -45,12 +47,15 @@ class PwmOutputAbsolute(PwmOutput):
         return round(scaled_final, 1)
 
     def exit(self):
-        logging.info('exit')
         self.pwm.ChangeDutyCycle(self.neutral)
         time.sleep(1.5)
         self.pwm.stop()
         GPIO.cleanup()
+        logging.info(
+            f'{__class__.__name__} - Exited')
         return
 
     def neutralize(self):
         self.pwm.ChangeDutyCycle(self.neutral)
+        logging.info(
+            f'{__class__.__name__} - Neutralized')

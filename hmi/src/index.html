@@ -423,7 +423,7 @@
                     <span class="sidebar-header-text">Speed</span>
                     <li class="settings-item steer_sensitivity">
                         <i class='bx bxs-zap'></i>
-                        <input class="settings-item-slider" type="range" id="steerSensitivitySlider" min="0" max="100" value="15">
+                        <input class="settings-item-slider" type="range" id="powerSlider" min="0" max="100" value="15">
                     </li>
                 </li>
             </ul>
@@ -444,8 +444,8 @@
         // const socket = io('http://' + IP + ':' + SOCKET_PORT);
 
         // Create MQTT client instance
-        // client = new Paho.MQTT.Client('192.168.0.170', Number(9001), "clientId");
-        client = new Paho.MQTT.Client('192.168.0.138', Number(9001), "clientId");
+        client = new Paho.MQTT.Client('192.168.0.170', Number(9001), "clientId");
+        // client = new Paho.MQTT.Client('192.168.0.138', Number(9001), "clientId");
 
         // set callback handlers
         client.onConnectionLost = onConnectionLost;
@@ -526,21 +526,21 @@
             });
         });
 
-        document.addEventListener("DOMContentLoaded", function() {
-        const buttons = document.querySelectorAll(".speed-button");
-        buttons.forEach(function(button) {
-            button.addEventListener("click", function() {
-                // Reset the active state for all buttons
-                buttons.forEach(function(btn) {
-                    btn.classList.remove("active");
-                });
+        // document.addEventListener("DOMContentLoaded", function() {
+        // const buttons = document.querySelectorAll(".speed-button");
+        // buttons.forEach(function(button) {
+        //     button.addEventListener("click", function() {
+        //         // Reset the active state for all buttons
+        //         buttons.forEach(function(btn) {
+        //             btn.classList.remove("active");
+        //         });
 
-                // Set the clicked button to active
-                this.classList.add("active");
-                power = parseInt(this.getAttribute("data-power"));
-                });
-            });
-        });
+        //         // Set the clicked button to active
+        //         this.classList.add("active");
+        //         power = parseInt(this.getAttribute("data-power"));
+        //         });
+        //     });
+        // });
 
         {
         let sideBar = document.querySelector('.side-bar');
@@ -583,12 +583,19 @@
             disableScroll();
             currentMaxSteerAngle = maxSteerAngle * 100/this.value
         };
+        powerSlider.oninput = function() {
+            disableScroll();
+            power = this.value
+        };
 
         // Remove disable-scroll class when slider change is complete
         driveSensitivitySlider.onchange = function() {
             enableScroll();
         };
 
+        steerSensitivitySlider.onchange = function() {
+            enableScroll();
+        };
         steerSensitivitySlider.onchange = function() {
             enableScroll();
         };

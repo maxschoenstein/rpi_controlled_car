@@ -19,5 +19,5 @@ class CameraProcessorFactory():
                 f'{__class__.__name__}: CAMERA_PROCESSOR_IMPL - Choose from {list(CameraProcessorImplementation)}')
 
         print(
-            f'{self._class__.__name__} - Created CameraProcessor: {cameraProcessor.__class__.__name__}')
+            f'{self.__class__.__name__} - Created CameraProcessor: {cameraProcessor.__class__.__name__}')
         return cameraProcessor
