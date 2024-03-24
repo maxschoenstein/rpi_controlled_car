@@ -1,18 +1,32 @@
 
 import time
 import logging
+import logging.config
 import os
+import json
+
 from dotenv import load_dotenv
 
-env_file_path = os.path.join(os.path.dirname(
-    os.path.dirname(__file__)), '.env.dev')
-load_dotenv(env_file_path)
+from utils.getLogConfigFilepath import getLogConfigFilepath
+from utils.getDevEnvFilePath import getDevEnvFilePath
+
+with open(getLogConfigFilepath(), 'r') as f:
+    logging_config = json.load(f)
+
+# Apply logging configuration
+logging.config.dictConfig(logging_config)
+
+try:
+    path = getDevEnvFilePath('control')
+    load_dotenv(path)
+    logging.info(f"{path} environment is loaded")
+except:
+    logging.info("prod environment is loaded")
 
 from control_handler.control_handler import ControlHandler  # noqa
 from input.factory.input_factory import InputFactory  # noqa
 from pwm_output.factory.pwm_output_factory import PwmOutputFactory  # noqa
 
-logging.basicConfig(level=logging.DEBUG)
 
 if __name__ == "__main__":
     controlHandler = ControlHandler()

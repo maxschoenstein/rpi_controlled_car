@@ -1,4 +1,5 @@
 import time
+import logging
 
 import paho.mqtt.client as mqtt
 
@@ -10,7 +11,7 @@ class OutputClientMQTT(OutputClient):
         self._endpoint = endpoint
 
         def on_connect(client, userdata, flags, rc):
-            print("Connected with result code "+str(rc))
+            logging.info("Connected with result code "+str(rc))
             client.subscribe(self._endpoint)
 
         self.client = mqtt.Client()

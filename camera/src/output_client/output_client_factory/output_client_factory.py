@@ -1,4 +1,5 @@
 import os
+import logging
 
 from output_client.impl.output_client_socketio import OutputClientSocketIO
 from output_client.impl.output_client_mqtt import OutputClientMQTT
@@ -28,7 +29,7 @@ class OutputClientFactory():
             raise ValueError(
                 f'{__class__.__name__}: OUTPUT_IMPL - Choose from {list(OutputClientInterface)}')
 
-        print(
+        logging.info(
             f'{__class__.__name__} - Created OuputClient: {outputClient.__class__.__name__}')
 
         return outputClient

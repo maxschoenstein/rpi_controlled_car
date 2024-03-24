@@ -11,11 +11,11 @@ class OutputClientSocketIO(OutputClient):
 
         @self.sio.event
         def connect():
-            print('Connected to server:', self._server_url)
+            logging.info('Connected to server:', self._server_url)
 
         @self.sio.event
         def disconnect():
-            print('Disconnected from server')
+            logging.info('Disconnected from server')
 
         self.sio.connect(self._server_url)
 
