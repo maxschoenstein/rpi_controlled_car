@@ -28,7 +28,7 @@ class PwmOutputDriveFactory():
         if PWM_OUTPUT_DRIVE_IMPL == PwmOutputDriveImplementation.ABS:
             pwmOutputDrive = PwmOutputAbsolute(
                 PIN_DRIVE, FREQENCY_DRIVE, MAX_DRIVE, MIN_DRIVE,
-                NEUTRAL_DRIVE, STEP_DRIVE)
+                NEUTRAL_DRIVE)
         elif PWM_OUTPUT_DRIVE_IMPL == PwmOutputDriveImplementation.DRV_MODES:
             pwmOutputDrive = PwmOutputDriveModes(
                 PIN_DRIVE, FREQENCY_DRIVE, MAX_DRIVE, MIN_DRIVE,

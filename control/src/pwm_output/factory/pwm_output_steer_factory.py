@@ -26,7 +26,7 @@ class PwmOutputSteerFactory():
         if PWM_OUTPUT_STEER_IMPL == PwmOutputSteerImplementation.ABS:
             pwmOutputDrive = PwmOutputAbsolute(
                 PIN_STEER, FREQENCY_STEER, MAX_STEER, MIN_STEER,
-                NEUTRAL_STEER, STEP_STEER)
+                NEUTRAL_STEER)
         elif PWM_OUTPUT_STEER_IMPL == PwmOutputSteerImplementation.STEP_STEER:
             pwmOutputDrive = PwmoutputSteerStep(
                 PIN_STEER, FREQENCY_STEER, MAX_STEER, MIN_STEER,
