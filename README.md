@@ -82,8 +82,8 @@ Connect your mobile device to the same WiFi your RaspberryPi is connected. <br>
 Go to the Mozilla Firefox webbrowser on your mobile device and search for ``<raspberrypi_ip>:3000/index.html``. Other browsers may not support the device orientation handling.
 
 You should see following webpage: <br>
-![alt text](data\jpg\hmi_demo_1.jpg "Title") 
-![alt text](data\jpg\hmi_demo_2.jpg "Title")
+![alt text](./data/jpg/hmi_demo_1.jpg "Title") 
+![alt text](./data/jpg/hmi_demo_2.jpg "Title")
 
 ### Orientation handling
 By rotating your mobile device around the z-axis you can steer the car. 
