@@ -30,9 +30,9 @@ class InputMqtt(Input):
                 data = int(message.payload)
                 controlHandler.handle_drive(data/100, pwmOutputs.drive)
 
-            # elif message.topic == 'steer':
-            #     data = int(message.payload)
-            #     controlHandler.handle_steer(data/100, pwmOutputs.steer)
+            elif message.topic == 'steer':
+                data = int(message.payload)
+                controlHandler.handle_steer(data/100, pwmOutputs.steer)
 
             elif message.topic == 'exit':
                 controlHandler.exit(pwmOutputs.drive, pwmOutputs.steer)

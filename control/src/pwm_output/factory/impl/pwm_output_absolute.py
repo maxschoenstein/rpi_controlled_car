@@ -24,7 +24,7 @@ class PwmOutputAbsolute(PwmOutput):
         time.sleep(1.5)
         self.pwm.ChangeDutyCycle(0)
 
-        logging.info(f'{self._class__.__name__} initalized\n \
+        logging.info(f'{self.__class__.__name__} initalized\n \
         Pin: {self.pin}\n \
         PWM-Frequency: {self.frequency}\n\
         PWM-Max: {self.max}\n \
