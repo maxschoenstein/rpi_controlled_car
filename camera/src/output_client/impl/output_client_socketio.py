@@ -1,4 +1,6 @@
+import logging
 import socketio
+
 from camera_processor.output_client import OutputClient
 
 

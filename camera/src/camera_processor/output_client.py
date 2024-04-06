@@ -7,11 +7,10 @@ class OutputClient(ABC):
         pass
 
     @abstractmethod
-    def emitMessage(self, event: str, message: json):
+    def emitMessage(self, message: json):
         '''Emitting a image encoded as a json string.
 
         Args:
-        - event: Event name.
         - message: json encoded message.        
         '''
         pass

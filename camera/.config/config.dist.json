@@ -1,0 +1,9 @@
+{
+"messangerIp":"<youre_raspberry_ip>",
+"messangerPort":1883,
+"frameRate":15,
+"resolutionX":450,
+"resolutionY":200,
+"outputImplementation":2,
+"cameraProcessorImplementation":1
+}
