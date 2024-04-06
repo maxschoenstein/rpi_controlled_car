@@ -1,6 +1,5 @@
 
 import os
-import base64
 import time
 from camera_processor.output_client import OutputClient
 
@@ -22,6 +21,5 @@ class CameraProcessorMock(CameraProcessor):
 
             with open(os.path.join((imageDirectory), f'mockImage{imageNumber}.jpg'), 'rb') as f:
                 imageData = f.read()
-                # base64Image = base64.b64encode(imageData).decode('utf-8')
             outputClient.emitMessage(imageData)
             i += 1

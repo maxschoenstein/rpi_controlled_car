@@ -1,23 +1,24 @@
-import os
 import logging
 
 from camera_processor.enums import CameraProcessorImplementation
 
-CAMERA_PROCESSOR_IMPL = int(os.getenv('CAMERA_PROCESSOR_IMPL'))
+from utils.loadConfig import loadConfig
+
+CONFIG = loadConfig('config.json')
 
 
 class CameraProcessorFactory():
     def createCameraProcessor(self):
-        if CAMERA_PROCESSOR_IMPL == CameraProcessorImplementation.MOCK:
+        if CONFIG['cameraProcessorImplementation'] == CameraProcessorImplementation.MOCK:
             from camera_processor.impl.camera_processor_mock import CameraProcessorMock
             cameraProcessor = CameraProcessorMock()
 
-        elif CAMERA_PROCESSOR_IMPL == CameraProcessorImplementation.RASPI:
+        elif CONFIG['cameraProcessorImplementation'] == CameraProcessorImplementation.RASPI:
             from camera_processor.impl.camera_processor_raspi import CameraProcessorRaspi
             cameraProcessor = CameraProcessorRaspi()
         else:
             raise ValueError(
-                f'{__class__.__name__}: CAMERA_PROCESSOR_IMPL - Choose from {list(CameraProcessorImplementation)}')
+                f'{__class__.__name__}: cameraProcessorImplementation - Choose from {list(CameraProcessorImplementation)}')
 
         logging.info(
             f'{self.__class__.__name__} - Created CameraProcessor: {cameraProcessor.__class__.__name__}')

@@ -42,6 +42,9 @@ Clone GitHub repository.
 git clone https://github.com/maxschoenstein/rpi_controlled_car
 ```
 
+### Configurations
+Set configuration files for [*camera*](./camera/README.md) and [*control*](./control/README.md) service
+
 ### Start mosquitto docker container
 You need a running MQTT broker for communication between the modules
 ```

@@ -1,2 +1,7 @@
+# Config
+/camera/.config/config.json
+/control/.config/config.json
+
 *.log
 /data/mp4
+/templates/
