@@ -4,12 +4,9 @@ import logging
 
 from control_handler.pwm_output import PwmOutput
 
-logging.basicConfig(level=logging.DEBUG)
-
 
 class PwmOutputDriveModes(PwmOutput):
-    def __init__(self, pin, frequency, max, min, neutral, step, acc, dec):
-        super().__init__(pin, frequency, max, min, neutral, step)
+    def __init__(self, pin, frequency, max, min, neutral, acc, dec):
         self._max_acceleration = acc
         self._min_deceleration = dec
 

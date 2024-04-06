@@ -1,0 +1,23 @@
+{
+    "messangerIp": "<youre_raspberry_ip>",
+    "messangerPort": 1883,
+    
+    "drivePwmPin": 19,
+    "drivePwmFrequency": 50,
+    "driveMaxPwmDutyCycle": 12,
+    "driveMinPwmDutyCycle": 4.5,
+    "driveNeutralPwmDutyCycle": 6.5,
+    "driveAccPwmDutyCycle": 8,
+    "driveDecPwmDutyCycle": 5.8,
+    
+    "steerPwmPin": 18,
+    "steerPwmFrequency": 50,
+    "steerMaxPwmDutyCycle": 9,
+    "steerMinPwmDutyCycle": 3.5,
+    "steerNeutralPwmDutyCycle": 6.25,
+    "steerPwmDutyCycleStep": 0.25,
+    
+    "inputImplementation": 0,
+    "driveOutputImplementation": 1,
+    "steerOutputImplementation": 1
+    }
