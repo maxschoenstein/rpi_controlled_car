@@ -17,6 +17,13 @@
             "request": "launch",
             "program": "${workspaceFolder}/hmi/src/server.js",
             "console": "integratedTerminal"
+        },
+        {
+            "name": "Python Debugger: Camera",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/camera/src/main.py",
+            "console": "integratedTerminal"
         }
     ]
 }
