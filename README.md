@@ -1,5 +1,5 @@
 # rpi_controlled_car
-In this project a rc car was reconstructed to be controlled by a Raspberry Pi. The car can then be piloted by a HMI running on a mobile device. 
+This GitHub repository contains the documentation and code for a project where an RC car has been reconstructed to be controlled by a Raspberry Pi. The vehicle can be piloted via a user-friendly graphical interface (HMI) running on a mobile device. 
 
 ![alt text](https://github.com/maxschoenstein/rpi_controlled_car_data/blob/main/demo.gif "rc_car_components")
 
