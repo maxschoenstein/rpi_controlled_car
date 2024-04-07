@@ -22,7 +22,6 @@ This GitHub repository contains the documentation and code for a project where a
 ## Software
 **RaspberryPi**
 * Debian: Raspbian GNU/Linux 10 (buster)
-* Connection to WiFi
 * Docker (25.0.4)
 * Node.js (node: v10.24.0; npm: 5.8.0)
 
@@ -41,6 +40,9 @@ Clone GitHub repository.
 ```
 git clone https://github.com/maxschoenstein/rpi_controlled_car
 ```
+### Connect RPi to Mobile Device
+To connect youre Raspberry Pi to your mobile device follow following instructions:
+* https://medium.com/geekculture/how-to-connect-to-the-raspberry-pi-using-mobile-hotspot-2362a6b02efc
 
 ### Configurations
 #### Logs
@@ -84,7 +86,6 @@ Alternativly execute  `./start.sh` manually.
 ./start.sh
 ```
 ## HMI
-Connect your mobile device to the same WiFi your RaspberryPi is connected. <br>
 Go to the Mozilla Firefox webbrowser on your mobile device and search for ``<raspberrypi_ip>:3000/index.html``. Other browsers may not support the device orientation handling.
 
 You should see following webpage: <br>
