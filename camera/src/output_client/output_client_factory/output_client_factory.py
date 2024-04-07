@@ -18,11 +18,11 @@ class OutputClientFactory():
 
         elif CONFIG['outputImplementation'] == OutputClientInterface.SOCKETIO:
             outputClient = OutputClientSocketIO(
-                ip=CONFIG["raspberryPiIp"], port=CONFIG["messangerPort"], endpoint='frame')
+                ip=CONFIG["messangerIp"], port=CONFIG["messangerPort"], endpoint='frame')
 
         elif CONFIG['outputImplementation'] == OutputClientInterface.MQTT:
             outputClient = OutputClientMQTT(
-                ip=CONFIG["raspberryPiIp"], port=CONFIG["messangerPort"], endpoint='frame')
+                ip=CONFIG["messangerIp"], port=CONFIG["messangerPort"], endpoint='frame')
 
         else:
             raise ValueError(

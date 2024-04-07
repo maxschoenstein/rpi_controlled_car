@@ -410,7 +410,7 @@
                 </li>
                 <li class="settings-item drive_sensitivity">
                     <i class='fa fa-arrows-v'></i>
-                    <input class="settings-item-slider" type="range" id="driveSensitivitySlider" min="20" max="100" value="75">
+                    <input class="settings-item-slider" type="range" id="driveSensitivitySlider" min="20" max="100" value="10">
                     <p id="driveSensitivitySliderValue"></p>
                 </li>
                 <li class="settings-item steer_sensitivity">
@@ -444,7 +444,7 @@
         // const socket = io('http://' + IP + ':' + SOCKET_PORT);
 
         // Create MQTT client instance
-        client = new Paho.MQTT.Client('192.168.0.170', Number(9001), "clientId");
+        client = new Paho.MQTT.Client('192.168.43.241', Number(9001), "clientId");
         // client = new Paho.MQTT.Client('192.168.0.138', Number(9001), "clientId");
 
         // set callback handlers

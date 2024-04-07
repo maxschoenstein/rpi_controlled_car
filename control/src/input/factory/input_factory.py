@@ -20,7 +20,7 @@ class InputFactory():
                                   controlHandler, pwmOutput)
         else:
             raise ValueError(
-                f'{__class__.__name__} - CONFIG["inputImplementation"]: Select values from {list(InputImplementation)}')
+                f'{__class__.__name__} - inputImplementation: Select values from {list(InputImplementation)}')
 
         logging.info(
             f'{__class__.__name__} - Created Input: {input.__class__.__name__}')

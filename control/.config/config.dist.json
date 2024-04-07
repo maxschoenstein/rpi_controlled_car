@@ -1,6 +1,6 @@
 {
     "messangerIp": "<youre_raspberry_ip>",
-    "messangerPort": 1883,
+    "messangerPort": 9001,
     
     "drivePwmPin": 19,
     "drivePwmFrequency": 50,

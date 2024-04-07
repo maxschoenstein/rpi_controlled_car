@@ -1,7 +1,11 @@
 # Config
 /camera/.config/config.json
 /control/.config/config.json
+/.config/logs.json
 
 *.log
+*.pyc
+*.cpython-37.pyc
+
 /data/mp4
 /templates/

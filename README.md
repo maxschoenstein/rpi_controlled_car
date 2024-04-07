@@ -43,6 +43,9 @@ git clone https://github.com/maxschoenstein/rpi_controlled_car
 ```
 
 ### Configurations
+#### Logs
+``.config: logs.dist.json``: Add your path to the project directory to files: filename and rename the file to ``logs.json``
+#### Services
 Set configuration files for [*camera*](./camera/README.md) and [*control*](./control/README.md) service
 
 ### Start mosquitto docker container

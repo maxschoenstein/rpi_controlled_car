@@ -15,6 +15,6 @@ class PwmOutputFactory():
         pwmOutputs = PwmOutputs(pwmOutoutDrive, pwmOutoutSteer)
 
         logging.info(
-            f'{pwmOutputs.__class__.__name__} - Created')
+            f'{__class__.__name__} - {pwmOutputs.__class__.__name__} - Created')
 
         return pwmOutputs

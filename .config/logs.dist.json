@@ -15,7 +15,7 @@
     },
     "file": {
       "class": "logging.FileHandler",
-      "filename": "/home/maxscho/rpi_controlled_car/logs/python.log",
+      "filename": "path/to/project/directory/logs/python.log",
       "level": "DEBUG",
       "formatter": "standard"
     }
