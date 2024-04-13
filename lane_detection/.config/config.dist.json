@@ -1,0 +1,7 @@
+{
+"messangerIp":"<youre_raspberry_ip>",
+"messangerPort":1883,
+"outputImplementation": 2,
+"imageProcessorImplementation": 0,
+"inputImplementation": 2
+}

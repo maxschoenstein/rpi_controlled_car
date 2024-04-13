@@ -1,0 +1,7 @@
+{
+"messangerIp": "192.168.0.170",
+"messangerPort": 1883,
+"outputImplementation": 3,
+"imageProcessorImplementation": 0,
+"inputImplementation": 2
+}
