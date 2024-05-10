@@ -1,29 +1,45 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python Debugger: Control",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/control/src/main.py",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Node Debugger: HMI",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/hmi/src/server.js",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Python Debugger: Camera",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/camera/src/main.py",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "c:/Daten/git/rpi_controlled_car/lane_detection/src_cpp",
+      "program": "c:/Daten/git/rpi_controlled_car/lane_detection/src_cpp/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
         {
-            "name": "Python Debugger: Control",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${workspaceFolder}/control/src/main.py",
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "Node Debugger: HMI",
-            "type": "node",
-            "request": "launch",
-            "program": "${workspaceFolder}/hmi/src/server.js",
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "Python Debugger: Camera",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${workspaceFolder}/camera/src/main.py",
-            "console": "integratedTerminal"
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
         }
-    ]
+      ]
+    }
+  ]
 }

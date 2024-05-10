@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> RC Car Controller </title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        body {
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .arrow-container {
+            width: 300px;
+            position: absolute;
+            top: 90vh;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .arrow-box {
+            width: 75px;
+            height: 50px;
+            border: 2px solid #000000;
+            margin: 10px;
+            border-radius: 10px;
+            background-color: #08eff7; /* Default color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .arrow-box.active {
+            background-color: #1d04fa; 
+            border-color: #ffffff; 
+            border-radius: 5px;
+        }
+        
+        .arrow {
+            border: solid black;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 3px;
+            }
+
+        .right {
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        }
+
+        .left {
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+        }
+
+        .up {
+        transform: rotate(-135deg);
+        -webkit-transform: rotate(-135deg);
+        }
+
+        .down {
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('stream.mjpg'); /* Hintergrundbild festlegen */
+            background-position: center;
+            background-size: cover;
+            filter: blur(20px); /* Optional: Hintergrundbild verschwommen machen */
+            z-index: -1; /* Hintergrundelement unter dem Inhalt platzieren */
+        }
+
+        #stream-image {
+            width: auto; /* Set the image width to 100% of the viewport */
+            height: 100vh; 
+        }
+
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+
+</head>
+<body>
+    <div id="container">
+        <div class="background-image"></div>
+        <center>
+            <img id="stream-image" src="stream.mjpg">
+        </center>
+        <div class="arrow-container">
+            <div class="arrow-box" id="arrow-left">
+                <p><i class="arrow left"></i></p>
+            </div>
+            <div>
+                <div class="arrow-box" id="arrow-up">
+                    <p><i class="arrow up"></i></p>
+                </div>
+                <div class="arrow-box" id="arrow-down">
+                    <p><i class="arrow down"></i></p>
+                </div>
+            </div>
+            <div class="arrow-box" id="arrow-right">
+                <p><i class="arrow right"></i></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Connect to the external Socket.IO server
+        const socket = io('http://192.168.0.170:5001');
+
+        let shouldExit = false;
+
+        const arrowBoxes = {
+            'ArrowUp': document.getElementById('arrow-up'),
+            'ArrowDown': document.getElementById('arrow-down'),
+            'ArrowLeft': document.getElementById('arrow-left'),
+            'ArrowRight': document.getElementById('arrow-right'),
+        };
+
+        document.addEventListener('keydown', function(event) {
+            const arrowBox = arrowBoxes[event.key];
+            if (arrowBox) {
+                if (event.key == 'ArrowUp') {
+                    socket.emit('drive', 100);
+                } else if (event.key == 'ArrowDown') {
+                    socket.emit('drive', -100);
+                } else if (event.key == 'ArrowRight') {
+                    socket.emit('steer', -100);
+                } else if (event.key == 'ArrowLeft') {
+                    socket.emit('steer', 100);
+                }
+
+                arrowBox.classList.add('active');
+                updateArrowColor(arrowBox, true); // Update color for the pressed state
+            }
+
+            if (event.key === 'Escape') {
+                socket.emit('Escape');
+                shouldExit = true;
+            }
+        });
+
+        document.addEventListener('keyup', function(event) {
+            const arrowBox = arrowBoxes[event.key];
+
+            if (arrowBox) {
+                arrowBox.classList.remove('active');
+                updateArrowColor(arrowBox, false); // Update color for the released state
+            }
+
+            // document.getElementById('message').innerHTML = '';
+
+            if (shouldExit) {
+                alert('Script is exiting...');
+                window.close();
+            }
+        });
+
+        function updateArrowColor(arrowBox, isPressed) {
+            const arrowIcon = arrowBox.querySelector('.arrow');
+
+            if (isPressed) {
+                // Set the color when the key is pressed
+                arrowIcon.style.borderColor = '#ffffff'; // Change to your desired color
+            } else {
+                // Reset the color when the key is released
+                arrowIcon.style.borderColor = 'black'; // Reset to default or any specific color
+            }
+        }
+    </script>
+</body>
+</html>

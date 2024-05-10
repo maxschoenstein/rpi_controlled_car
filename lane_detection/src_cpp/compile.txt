@@ -1,0 +1,1 @@
+g++ -g -o main main.cpp ./controler/controler.cpp ./image_processor/image_processor_factory/image_processor_factory.cpp ./image_processor/impl/ImageProcessorImpl.cpp ./input/input_factory/InputFactory.cpp ./input/impl/InputImportImage.cpp ./utils/OpenJpegToBytes.cpp
